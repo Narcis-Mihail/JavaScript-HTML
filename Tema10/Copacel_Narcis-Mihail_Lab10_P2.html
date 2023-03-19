@@ -1,0 +1,62 @@
+//Copacel_Narcis-Mihail_Lab10_P2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+    <title>Document</title>
+    <script>
+        var counter=10;
+let r=[];
+let g=[];
+let b=[];
+var div;
+
+function componentToHex(c) {
+  return Math.abs(c).toString(16);
+  }
+  
+  function getRandomInt() {
+    return Math.floor(Math.random() * 256);
+  }
+
+function f1()
+{
+    div=document.getElementById("div1");
+
+    for(let i=0; i<counter; i++)
+    {
+      r[i]=getRandomInt();
+      g[i]=getRandomInt();
+      b[i]=getRandomInt();
+        var divs;
+        divs=document.createElement("div");
+        divs.id='div_'+i;
+        divs.setAttribute("style", "border: 1px solid red;");
+        //color[i] = Math.floor(Math.random()*16777215).toString(16);
+        divs.style.backgroundColor="rgb(" + r[i] + ", " + g[i] + ", " + b[i] + ")";
+        var my_div=document.getElementById("my_div");
+        my_div.appendChild(divs);
+    }
+
+    for(let i=0; i<counter; i++)
+    {
+      var divID=document.getElementById("div_"+i)
+      divID.addEventListener("mouseover",function(){
+        div.innerHTML = "Culoarea componentei este "+"#"+componentToHex(r[i])+""+componentToHex(g[i])+""+componentToHex(b[i])+".";
+          div.style.color="rgb(" + r[i] + ", " + g[i] + ", " + b[i] + ")";
+      });
+    }
+}
+
+
+    </script>
+</head>
+<body onload="f1();">
+    <div id="my_div"></div>
+    <div id="div1">---</div>
+</body>
+</html>

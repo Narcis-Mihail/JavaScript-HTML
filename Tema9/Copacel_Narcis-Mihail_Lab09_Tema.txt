@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tema_Lab9_Copacel_Narcis-Mihail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<script >
+class Student{
+    constructor(nume,prenume,data_nasterii,foaie_matricola)
+    {
+        this.nume=nume;
+        this.prenume=prenume;
+        this.data_nasterii=data_nasterii;
+        this.foaie_matricola=foaie_matricola;
+    }
+
+    afiseazaVarsta()
+    {
+        var crtDate=new Date();
+        var [day,month,year]=this.data_nasterii.split('-');
+        var DatNas=new Date(+year,+month-1,+day);
+        if((crtDate.getMonth()<DatNas.getMonth()) ||crtDate.getDay()<DatNas.getDay())
+            return (crtDate.getFullYear()-1)-DatNas.getFullYear();
+            else
+            {
+                if(crtDate.getMonth()>=DatNas.getMonth())
+                    return crtDate.getFullYear()-DatNas.getFullYear();
+            }
+        
+    }
+
+    setNume(nume_nou)
+    {
+        try {
+            if(nume_nou.length<3)
+                throw "Nume mai mic de 2 caractere";
+            this.nume=nume_nou;
+        } catch (error) {
+            textAfisat += "<br>" + error;
+        }
+    }
+
+    setPrenume(prenume_nou)
+    {
+        try {
+            if(prenume_nou.length<3)
+                throw "Prenume mai mic de 2 caractere";
+            this.prenume=prenume_nou;
+        } catch (error) {
+            textAfisat += "<br>" + error;
+        }
+    }
+
+    setDataNasterii(data_nasterii_nou)
+    {
+        try {
+            var crtDate=new Date();
+            var [day,month,year]=data_nasterii_nou.split('-');
+            if(crtDate.getFullYear()-year<18 && crtDate.getMonth()<month && crtDate.getDay()<day)
+                throw "Varsta este prea mica!";
+            this.data_nasterii=data_nasterii_nou;
+
+        } catch (error) {
+            textAfisat += "<br>" + error;
+        }
+    }
+
+    afiseazaNotele()
+    {
+        return this.foaie_matricola;
+    }
+
+    calculeazaMedia()
+    {
+        var i =0;
+        var nr=0;
+        for(j in this.foaie_matricola)
+            {nr += this.foaie_matricola[j];
+                i++;
+            }
+        var avg=nr/i;
+        return avg;
+
+    }
+
+    adaugaNota(nota_noua)
+    {
+        this.foaie_matricola.push(nota_noua);
+    }
+
+
+}
+
+textAfisat="";
+
+adaugareNota=(a,b) =>{a.foaie_matricola.push(b)};
+afiseazaNote=(a)=>{return a.foaie_matricola};
+
+
+function f1()
+{
+
+
+grupa = [];
+grupa.push(new Student("Copacel","Narcis","10-08-2001",[5,6,7,8]));
+grupa.push(new Student("Copacel","Cristian","10-08-2002",[4,6,2,8]));
+grupa.push(new Student("Prodan","Remus","31-01-2002",[9,6,10,8]));
+
+
+textAfisat += "<br><br>atributele studentilor: ";
+
+Afisare(grupa);
+
+grupa.sort(OrdonareNume);
+
+textAfisat += "<br><br>Studentii ordonati dupa nume: ";
+
+Afisare(grupa);
+
+textAfisat += "<br>Studenti ordonati dupa medii: ";
+
+grupa.sort(OrdonareMedii); 
+
+Afisare(grupa);
+
+textAfisat += "<br>Studenti ordonati dupa data nasterii: ";
+
+grupa.sort(OrdonareDataNastere);
+
+Afisare(grupa);
+
+grupa[0].adaugaNota(10);
+grupa[1].adaugaNota(5);
+grupa[2].adaugaNota(10);
+
+textAfisat += "<br><br>Studenti ordonati dupa medii(dupa adaugarea altor note): ";
+grupa.sort(OrdonareMedii);
+Afisare(grupa);
+
+grupa[0].nume="Gica";
+grupa[1].nume="Oprea";
+grupa[2].nume="Oprea";
+grupa[2].prenume="Andrei";
+grupa.sort(OrdonareNume);
+
+textAfisat += "<br><br>Studentii ordonati dupa nume: ";
+
+Afisare(grupa);
+
+grupa.splice(1,1,new Student("Copacel","Narcis","10-08-2001",[5,6,7,8]))
+
+textAfisat += "<br><br>Studentii dupa stergerea si adaugarea altor date: ";
+Afisare(grupa);
+
+grupa[1].setDataNasterii("10-08-2005");
+grupa[0].setDataNasterii("11-12-2005");
+grupa[2].setNume("Oa");
+grupa[2].setPrenume("Aa")
+grupa[2].setNume("Diaconu");
+
+textAfisat += "<br><br>Studentii dupa modificarea datelor: ";
+Afisare(grupa);
+
+document.body.style.color = "rgb(" + Math.floor(Math.random() * 255) + ", " + Math.floor(Math.random() * 255) + ", " + Math.floor(Math.random() * 255) + ")";
+
+document.getElementById("displayer").innerHTML=textAfisat;
+}
+
+function OrdonareNume(a,b)
+{
+    fa=a.nume.toLowerCase();
+    fb=b.nume.toLowerCase();
+
+    if(fa < fb)
+    {
+        return -1;
+    }
+    if(fa>fb)
+    {
+        return 1;
+    }
+
+    fa1=a.prenume.toLowerCase();
+    fb1=b.prenume.toLowerCase();
+
+    if(fa1 < fb1)
+    {
+        return -1;
+    }
+    if(fa1>fb1)
+    {
+        return 1;
+    }
+    return 0
+}
+
+function OrdonareMedii(a,b)
+{
+    ma=a.calculeazaMedia();
+    mb=b.calculeazaMedia();
+    if(ma > mb)
+    {
+        return -1;
+    }
+    if(ma < mb)
+    {
+        return 1;
+    }
+    return 0
+    
+}
+
+function OrdonareDataNastere(a,b)
+{
+    var crtDate=new Date();
+    var [day1,month1,year1]=a.data_nasterii.split('-');
+    var DatNas1=new Date(+year1,+month1-1,+day1);
+    var [day2,month2,year2]=b.data_nasterii.split('-');
+    var DatNas2=new Date(+year2,+month2-1,+day2);
+    return DatNas1-DatNas2;
+}
+
+function Afisare(a)
+{
+    for(i in grupa)
+{
+    textAfisat+="<br>";
+    attr=Object.keys(a[i]);
+    for(j in attr)
+    {
+        textAfisat += attr[j] + ": ";
+        if(typeof(a[i][attr[j]]) != "function")
+            textAfisat+= a[i][attr[j]] + ",";
+        else
+        textAfisat+= a[i][attr[j]]();
+    }
+}
+}
+
+</script>
+
+
+</head>
+<body onLoad="f1()">
+    <div id="displayer">
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+//Copacel_Narcis-Mihail_Lab10_P7
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+    function Date()
+{
+    var div=document.getElementById("my_div");
+    var url=window.location;
+    let userAgent = navigator.userAgent;
+    let browserName;
+    
+    if(userAgent.match(/chrome|chromium|crios/i)){
+        browserName = "chrome";
+      }else if(userAgent.match(/firefox|fxios/i)){
+        browserName = "firefox";
+      }  else if(userAgent.match(/safari/i)){
+        browserName = "safari";
+      }else if(userAgent.match(/opr\//i)){
+        browserName = "opera";
+      } else if(userAgent.match(/edg/i)){
+        browserName = "edge";
+      }else{
+        browserName="No browser detection";
+      }
+
+    //var url=new URL("http://aaa.bbb.ccc.com/asdf/asdf/sadf.aspx?blah")
+    div.innerHTML="Host: "+url.host+"<br> Hostname: "+url.hostname+" <br>Href: "+url.href+"<br> Pathname: "+url.pathname+" <br>Port: "+url.port+" <br>Protocol: "+url.protocol +"<br>Browser-ul folosit este: "+ browserName;
+    
+}
+</script>
+
+</head>
+<body onload="Date()">
+    
+    <div id="my_div"></div>
+</body>
+</html>

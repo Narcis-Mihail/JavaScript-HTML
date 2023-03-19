@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<title>textarea</title>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script >
+
+        function f1()
+    {
+        var d1=document.getElementById("date1")
+        var d2=document.getElementById("date2")
+
+        var [y,m,d]=d1.value.split('-')
+        var dt1=new Date(+y,+m-1,+d);
+
+        [y,m,d]=d2.value.split('-')
+        var dt2=new Date(+y,+m-1,+d);
+
+        var dif_Timp=Math.abs(dt1.getTime()-dt2.getTime());
+        var dif_Luni=dif_Timp/(1000*3600*24*30)
+
+        if(dif_Luni<3)
+
+            alert("Perioada este mai mica de 3")
+        else
+            alert("All is good")
+
+}
+</script>
+
+</head>
+
+<body>
+
+<h2>textarea</h2>
+Date
+
+<form onSubmit="f1()">
+
+  <input type="date" id="date1">
+
+  <input type="date" id="date2">
+
+  <input type="submit" value="OK">
+
+</form>
+
+</body>
+</html>

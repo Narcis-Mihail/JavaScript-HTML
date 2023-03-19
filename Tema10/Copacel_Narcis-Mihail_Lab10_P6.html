@@ -1,0 +1,25 @@
+//Copacel_Narcis-Mihail_Lab10_P6
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script >
+    function Ceas()
+{
+    var div=document.getElementById("my_div");
+    var date=new Date
+    div.innerHTML=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+    setInterval(Ceas, 1000);
+}
+</script>
+
+</head>
+<body onload="Ceas()">
+    <div id="my_div" ></div>
+</body>
+</html>

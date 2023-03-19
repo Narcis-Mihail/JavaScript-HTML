@@ -1,0 +1,166 @@
+//Copacel_Narcis-Mihail_Lab11_P5
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>password</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<style>
+	input {
+		max-width: fit-content;
+	}
+
+	.radio
+	{
+		display: flex;
+		flex-direction: row;
+	}
+
+	.Ck
+	{
+		display: flex;
+		flex-direction: row;
+	}
+
+	.Ck1
+	{
+		display: flex;
+		flex-direction: row;
+	}
+
+
+</style>
+
+<script>
+    function f1(){
+	var nume = document.getElementById("nume");
+	var prenume = document.getElementById("prenume");
+    var prenume = document.getElementById("p2");
+	var checkbox1 = document.getElementById("s1");
+    var checkbox2 = document.getElementById("s2");
+    var checkbox3 = document.getElementById("s3");
+    var BtD=document.getElementById("birthday");
+    var email=document.getElementById("email");
+    var telefon=document.getElementById("telefon");
+    var CK=document.getElementsByTagName("div")
+    var c=0;
+
+
+    
+
+    if(nume.value.length==0 || prenume.value.length==0)
+        alert("Numele nu a fost completat")
+    else
+    {
+        if(BtD.value == 0)
+            alert("Data nasterii nu a fost introdusa")
+        else
+        {
+            if(email.value.length==0)
+                alert("Emailul nu a fost introdus")
+            else
+            {
+                if(telefon.value.length==0)
+                    alert("Numarul de telefon nu a fost introdus")
+               
+                }
+            }
+        }
+    
+
+        if(email.value.lastIndexOf("@")==-1 || email.value.lastIndexOf(".com")==-1 || email.value.lastIndexOf(".ro")==-1)
+            alert("Adresa de mail invalida")
+        
+        
+        if(telefon.value.lastIndexOf("07",7) == -1 || telefon.value.length!=10)
+            alert("Numar de telefon invalid")
+    
+        if(afiseazaVarsta(BtD.value)<18)
+            alert("Copchil")
+
+}
+
+
+function afiseazaVarsta(data_nasterii)
+    {
+        var crtDate=new Date();
+        var [year,month,day]=data_nasterii.split('-');
+        var DatNas=new Date(+year,+month-1,+day);
+
+        if((crtDate.getMonth()<DatNas.getMonth()) ||crtDate.getDay()<DatNas.getDay())
+            return (crtDate.getFullYear()-1)-DatNas.getFullYear();
+            else
+            {
+                if(crtDate.getMonth()>=DatNas.getMonth())
+                    return crtDate.getFullYear()-DatNas.getFullYear();
+            }
+        
+           
+    }
+</script>
+
+</head>
+
+<body>
+
+<h2>Formular</h2>
+
+<form onsubmit="f1()" style=" display: flex; flex-direction:column;">
+
+	Nume:
+	<input type="text" name="nume" id="nume">
+	Prenume:
+	<input type="text" name="prenume" id="prenume">
+	Gen:
+	<div class="radio">
+		<input type="radio" name="sex" id="s1" value="male" checked> male
+		<input type="radio" name="sex" id="s2" value="female"> female
+		<input type="radio" name="sex" id="s3" value="other"> other
+	</div>
+	Data nasterii:
+	<input type="date" name="birthday" id="birthday">
+	Adresa de mail:
+	<input type="text" name="email" id="email">
+	Numarul de telefon:
+	<input type="text" name="telefon" id="telefon">
+	
+	Limbaje cunoscate:
+	<div class="Ck">
+		
+		Java
+		<input type="checkbox" name="PLM" id="Ck" value="Java">
+		
+		
+		C++
+		<input type="checkbox" name="PLM" id="Ck" value="C++">
+		
+		
+		C
+		<input type="checkbox" name="PLM" id="Ck" value="C">
+		
+		
+		JavaScript
+		<input type="checkbox" name="PLM" id="Ck" value="JavaScript">
+	
+		
+		Python
+		<input type="checkbox" name="PLM" id="Ck" value="Python">
+	  
+		
+		Ruby
+		<input type="checkbox" name="PLM" id="Ck" value="Ruby"> 
+		
+	</div>
+	<p>Observatii:</p>
+   <textarea name="Observatii" id="Observatii" cols="30" rows="5" style="height: 100px; width: 200px;" ></textarea>
+	<input type="submit" value="OK">
+</form>
+
+
+</body>
+</html>

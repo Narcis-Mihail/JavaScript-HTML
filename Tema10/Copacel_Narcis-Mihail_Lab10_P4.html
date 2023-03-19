@@ -1,0 +1,100 @@
+//Copacel_Narcis-Mihail_Lab10_P4
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+<style>
+     .grid {
+        display: flex;   /* <--- required */
+    }
+
+    .column {
+        flex: 1; /* <--- required (style column to fill the same space as the other columns) */
+    }
+
+    .row {
+        margin: 1px;
+        background: blue;
+        text-align: center;
+    }
+</style>
+
+<script>
+    let cID;
+var divT;
+var count=0;
+let y=0;
+
+function f1()
+{
+
+    var columns = 3;
+    var rows = 3;
+    var x=0;
+
+    var grid = document.createElement('div');
+    grid.className = 'grid';
+    for (var i = 0; i < columns; i++) {
+        var column = document.createElement('div'); // create column
+        column.className = 'column';
+        column.id = 'c_'+i;
+        for (var j = 0; j < rows; j++) {
+            var row = document.createElement('div'); // create row
+            row.className = 'row';
+            row.id="row_"+x;
+            x++;
+            row.textContent = i + '-' +j; // set text
+            column.appendChild(row); // append row in column
+        }
+        grid.appendChild(column); // append column inside grid
+    }
+    document.body.appendChild(grid);
+
+    Cronometru();
+
+        for (let i = 0; i <= x; i++)
+        {
+            
+            var div=document.getElementById("row_"+i)
+            if(div)
+            div.addEventListener("mouseover",function(){
+                
+                if(document.getElementById("row_"+i).style.backgroundColor!="red")
+                    y++;
+                document.getElementById("row_"+i).style.backgroundColor="red";
+            });
+        }
+    
+        
+    
+}
+
+function Cronometru()
+{
+    divT=document.getElementById("my_div");
+    setTimeout('counter()',1000);
+
+}
+
+function counter()
+{
+    count++;
+    if(y<9)
+        {var tempo=setTimeout('counter()',1000);
+        divT.innerHTML=y.toString();}
+    else
+    divT.innerHTML="Patratelele au fost colorate in "+count+" secunde.";
+        
+}
+</script>
+
+</head>
+<body onload="f1()">
+    
+    <div id="my_div"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+//Copacel_Narcis-Mihail_Lab11_P4
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Move circle</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+    <script>
+
+        function loadpage() {
+            var cerc = document.getElementById("cerc_div");
+            cerc.style.backgroundColor = "white";
+            cerc.style.width = "100px";
+            cerc.style.height = "100px";
+            cerc.style.borderRadius = "50%";
+            cerc.style.position = "absolute";
+
+        }
+        function ok() {
+
+            var cerc = document.getElementById("cerc_div");
+
+            cerc.style.top = document.getElementById("numbers_field1").value + "px";
+            cerc.style.left = document.getElementById("numbers_field2").value + "px"
+
+        }
+    </script>
+
+</head>
+
+<body onload="loadpage()">
+
+    <h2>Move circle with numbers</h2>
+
+    <input type="number" id="numbers_field1" min="100" max="400" style="width:150px; height:50px">
+    <input type="number" id="numbers_field2" min="100" max="400" style="width:150px; height:50px">
+    <input type="submit" onclick="ok()" value="OK" style="width:150px; height:50px">
+
+    <div id="cerc_div"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+//Copacel_Narcis-Mihail_Lab11_P6
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Buttons</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+    <script>
+        var limit = 25;
+        var sum = 0;
+        function onload() {
+            var div_with_buttons = document.getElementById("div_with_buttons");
+            for (var i = 0; i < 10; i++) {
+                var button = document.createElement("button");
+                button.style.height = '50px';
+                button.style.width = '100px';
+                button.style.fontSize = '20px'
+                button.id = "b" + i;
+                var number = randomIntFromInterval(10, 20);
+                sum += number;
+                button.innerHTML = number;
+                button.addEventListener("click", increment);
+                div_with_buttons.appendChild(button);
+            }
+            updateSumText();
+        }
+
+        function increment(e) {
+            e.target.innerHTML = parseInt(e.target.innerHTML) + 1;
+            sum++;
+            if (parseInt(e.target.innerHTML) > limit) {
+                e.target.style.visibility = 'hidden';
+                sum -= limit;
+            }
+            updateSumText();
+        }
+
+        function randomIntFromInterval(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        function updateSumText() {
+            document.getElementById('sumTxt').innerHTML = 'SUM = ' + sum;
+        }
+    </script>
+</head>
+
+<body onload="onload()">
+    <h2>Buttons with numbers</h2>
+    <h3 id="sumTxt"></h3>
+    <div id="div_with_buttons"></div>
+</body>
+
+</html>

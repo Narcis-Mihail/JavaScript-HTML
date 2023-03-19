@@ -1,0 +1,96 @@
+//Copacel_Narcis-Mihail_Lab10_P1
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Lab_10_P1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+        <script>
+            var isOver=false;
+var rgb=false;
+document.onmousemove= getMouseXY;
+
+var IE = document.all?true:false;
+
+if (!IE) 
+	document.captureEvents(Event.MOUSEMOVE);
+
+
+var tempX;
+var tempY;
+
+function getMouseXY(e) {
+
+	if (IE) {
+		tempX = Event.clientX + document.body.scrollLeft;
+		tempY = Event.clientY + document.body.scrollTop;
+	} 
+	else {
+		tempX = e.pageX;
+		tempY = e.pageY;
+	}  
+
+	f3(tempX, tempY);
+}	
+
+function f1()
+{
+   
+    if(isOver)
+    isOver=false;
+        else
+    isOver=true;
+
+    setTimeout(f2,3000);
+
+}
+
+
+function f2()
+{
+    var div=document.getElementById("mouse_div");
+    if(isOver)    
+      {div.style.backgroundColor="blue";
+      rgb=true;
+    }
+    if(!isOver)
+       {div.style.backgroundColor="red";
+        rgb=false;}
+
+    
+    
+}
+
+function f3(x, y){
+			
+    var div=document.getElementById("mouse_div");
+	red_amount = Math.round(255*(screen.height - y)/screen.height);
+
+	cifra1 = Math.floor(red_amount);
+
+	
+
+	
+
+    if(!rgb)
+	div.style.backgroundColor = "rgb("+cifra1+",0,0)";
+    else
+    div.style.backgroundColor = "rgb(0,0,"+cifra1+")";
+	//alert(red);
+
+	
+}
+
+
+        </script>
+    </head>
+
+    <body>
+        <div id="mouse_div" style="position:relative;background-color:red  ;width: 100px; height: 100px; border: 1px solid red;" onmouseover="f1()" onmouseout="f1()"></div>
+    </body>
+
+</html>

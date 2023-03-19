@@ -1,0 +1,141 @@
+//Copacel_Narcis-Mihail_Lab11_P2
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Parole</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+    <script>
+        var strength;
+        var tips;
+
+        function onload() {
+            document.getElementById('pass').onkeydown = check;
+            document.getElementById('conf_pass').onkeydown = check;
+            document.getElementById('pass_score').style.transitionDuration = "0.4s";
+        }
+
+        function check() {
+            strength = 0;
+            tips = "";
+            var pass = document.getElementById("pass");
+            var conf_pass = document.getElementById("conf_pass");
+
+            tips += checkPasswordStrength(pass.value);
+            updateStrenght();
+        }
+
+        function updateStrenght() {
+            document.getElementById('pass_tips').innerHTML = tips;
+            pass_score = document.getElementById('pass_score');
+            switch (strength) {
+                case 0:
+                    pass_score.style.backgroundColor = '#Ff2000';
+                    pass_score.style.width = '15px';
+                    break;
+                case 1:
+                    pass_score.style.backgroundColor = '#Ff6900';
+                    pass_score.style.width = '30px';
+                    break;
+                case 2:
+                    pass_score.style.backgroundColor = '#Ffa800';
+                    pass_score.style.width = '60px';
+                    break;
+                case 3:
+                    pass_score.style.backgroundColor = '#F6ff00';
+                    pass_score.style.width = '120px';
+                    break;
+                case 4:
+                    pass_score.style.backgroundColor = '#4cff00';
+                    pass_score.style.width = '240px';
+                    break;
+                default:
+                    pass_score.style.visibility = 'invisible';
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            var text = '';
+            if (password.length < 8)
+                text += "Minim 8 caractere.\n";
+            else strength += 1;
+
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/))
+                strength += 1;
+            else text += "Litere mari si litere mici.\n";
+
+            if (password.match(/\d/))
+                strength += 1;
+            else text += "Cel putin un numar.\n";
+
+            if (password.match(/[^a-zA-Z\d]/))
+                strength += 1;
+            else text += "Cel putin un caracter special.\n";
+            return text;
+        }
+
+        function submit() {
+            var pass = document.getElementById("pass");
+            var conf_pass = document.getElementById("conf_pass");
+
+            if (pass.value.length == 0 || conf_pass.value.length == 0)
+                alert("Toate campurile trebuie completate");
+            else if (pass.value != conf_pass.value)
+                alert("Parola nu a fost confirmata corect");
+            else if (strength < 3)
+                alert("Parola este prea slaba");
+            else
+                alert("Parola confirmata");
+        }
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        label {
+            font-size: 1.4rem;
+        }
+
+        #btn_confirm,
+        input {
+            height: 25px;
+            width: 200px;
+            margin: 10px;
+        }
+
+        #pass_score {
+            height: 5px;
+            width: 15px;
+            background-color: #3333;
+        }
+
+        #pass_tips {
+            height: max-content;
+            width: 200px;
+            background-color: #3333;
+        }
+    </style>
+
+</head>
+
+<body onload="onload()">
+    <label for="pass">Password</label>
+    <input type="password" id="pass" name="password" minlength="8" required>
+    <label for="conf_pass">Confirm password</label>
+    <input type="password" id="conf_pass" name="confirm_password" minlength="8" required>
+    <br>
+    <input id="btn_confirm" type="submit" onclick="submit()" value="Confirm">
+    <div id="pass_score"></div>
+    <div id="pass_tips"></div>
+</body>
+
+</html>

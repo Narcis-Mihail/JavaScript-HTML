@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+div{
+	border: 1px solid blue;
+	margin: 10px;}
+	
+.right {
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	text-align: right;
+	}
+	
+.centrat
+	{
+	text-align: center;
+	}
+	
+.gallery {
+	display:flex;
+	margin: 5px;
+	border: 1px solid #ccc;
+	float: left;
+	width: 180px;
+	align-items: center;
+	}
+.gallery img {
+	position: static;
+	max-width: 100%;
+	height: auto;
+	
+	}
+
+.clear{
+	clear:both;
+	}
+
+.column {
+	display:table-cell;
+	margin: 5px;
+	border: 1px solid #ccc;
+	float: left;
+	width: 250px;
+	height: 200px;
+	overflow-y: scroll;
+	}
+	
+address {
+	/*display: block;*/
+	font-style: italic;
+	text-align: left;
+	}
+
+footer{
+	background-color: #3333cc;
+	position: relative;
+	bottom: 0px;
+	}
+
+/*p{
+	font-size: 1.5vw;
+	}*/
+
+@media screen and(max-width: 1000px) {
+	
+	}
+	
+
+</style>
+<head style="background-color:red">
+<title>Tema_Lab08_Copacel_Narcis-Mihail</title>
+<img src="seneca-3.jpg" alt="Stoic" width="250" height="250">
+<p style="font-family:verdana">"În mare parte, succesul stă în voința de a învinge." - Seneca
+</p>
+</head>
+
+<body style="background-color:powderblue">
+
+<div class="centrat">
+	<a href="https://www.w3schools.com/html/html_basic.asp" target="_blank" style="text-align:center;">Primul link</a>
+	<a href="https://www.w3schools.com/html/html_editors.asp" target="_blank" style="text-align:center;">Al doilea link</a>
+	<a href="https://www.w3schools.com/html/html_headings.asp" target="_blank" style="text-align:center;">Al treilea link link</a>
+</div>
+
+<div class="right">
+	<a href="#" style="text-align:right;">Primul link</a><br>
+	<a href="#" style="text-align:right;">Al doilea link</a><br>
+	<a href="#" style="text-align:right;">Al treilea link link</a>
+</div>
+
+<div class="gallery">
+	<img src="descarcare1.jpg" alt="O poza" >
+</div>
+
+<div class="gallery">
+	<img src="descarcare2.jpg" alt="O poza" >
+</div>
+
+<div class="gallery">
+	<img src="descarcare3.jpg" alt="O poza" >
+</div>
+
+<div class="clear"></div>
+
+<div class="column">
+	<h1>Seneca</h1>
+	<p>Lucius Annaeus Seneca (sau mai simplu Seneca sau Seneca cel Tânăr, n. cca. 4 î.Hr. – d. 65) a fost un filosof stoic roman, preceptor al împăratului Nero. Seneca a ocupat și funcții în administrația Imperiului. A fost fiul lui Seneca cel Bătrân (55 î.Hr.-41d.Hr.).</p>
+</div>
+
+<div class="column">
+	<h1>Marc Aureliu</h1>
+	<p>Marc Aureliu (în latină Marcus Aurelius, n. 26 aprilie 121 d.Hr.,[1] Roma, Imperiul Roman – d. 17 martie 180 d.Hr.,[2][1] Vindobona, Imperiul Roman) a fost un împărat roman din dinastia Antoninilor, între anii 161 și 180 d.Hr., și filosof stoic. Născut ca Marcus Annius Verus sau Marcus Catilius Severus, a luat mai târziu, după ce a fost adoptat de împăratul Antoninus Pius, numele de Marcus Aelius Aurelius Verus. Ca împărat s-a numit Marcus Aurelius Antoninus Augustus.</p>
+</div>
+
+<div class="column">
+	<h1>Epictet</h1>
+	<p>Epictet (gr.: Επίκτητος; lat.: Epictetus n. 50 d.Hr.,[1][2][3] Hierapolis⁠(d), Provincia Denizli, Turcia – d. 138 d.Hr., Nicopole, Epir, Grecia) a fost un filozof grec stoic. Probabil s-a născut la Hierapolis, Phrygia, și a trăit o mare parte din viață în Roma până în momentul exilului la Nicopolis, unde a și murit. Sclav al lui Epaphroditus, libert și secretar al lui Nero și, mai apoi, al lui Domițian, a fost discipol al lui Musonius Rufus (92/93 d.H.). Eliberat de Epaphroditus, a predat o vreme filozofia la Roma; odată cu alungarea filozofilor din Roma de către Domițian (cca 93 d.H.), a mers în Epir, stabilindu-se la Nicopolis, unde a întemeiat o școală celebră, cu discipoli remarcabili, între care s-a distins Arrian. Acestuia i se datorează faptul că învățăturile lui Epictet au ajuns până la noi: Arrian le-a grupat, ca Diatribai, probabil în opt cărți (la care se pare că se adăugau douăsprezece cărți de Homilii), dintre care au supraviețuit până în vremea noastră patru. El a publicat ulterior o selecție, cunoscută sub numele „Manual” (Encheiridion), care avea să exercite o influență de seamă asupra lui Aulus Gellius și a împăratului Marcus Aurelius. Alături de acesta din urmă și de Seneca, Epictet aparține, în plan filozofic, ultimei faze a stoicismului: neostoicismul roman.</p>
+</div>
+
+<div class="clear"></div>
+
+<footer>
+	<address class="address">
+		<div><img src="mail.png">Mail:<br><img src="telefon.png">Telefon: </div>
+	</address>
+	<div class="centrat">&copyCopacel Narcis-Mihail</div>
+</footer>
+
+</body>
+
+</html>
